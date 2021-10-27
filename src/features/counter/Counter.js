@@ -1,34 +1,33 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Button from '@material-ui/core/Button';
 
 import styles from './Counter.module.css';
-import { counterValueSelector, increment, decrement } from '../../redux';
+import { userDataSelector, updateUserData } from '../../redux';
 
 export function Counter() {
-  const count = useSelector(counterValueSelector);
-
   const dispatch = useDispatch();
+  const userData = useSelector(userDataSelector);
 
-  const handleDecrement = useCallback(() => {
-    dispatch(decrement());
-  }, [dispatch]);
-
-  const handleIncrement = useCallback(() => {
-    dispatch(increment());
+  const onUpdateUserData = useCallback(() => {
+    dispatch(
+      updateUserData({
+        id: 1,
+        name: 'John',
+        street: '600 Fannin Rd, Houston',
+        city: 'Houston',
+      }),
+    );
   }, [dispatch]);
 
   return (
     <div>
       <div className={styles.row}>
-        <button aria-label='Decrement value' onClick={handleDecrement}>
-          -
-        </button>
+        <Button color='primary' variant='contained' onClick={onUpdateUserData}>
+          Updata User Data
+        </Button>
 
-        <span className={styles.value}>{count}</span>
-
-        <button aria-label='Increment value' onClick={handleIncrement}>
-          +
-        </button>
+        <p>{JSON.stringify(userData)}</p>
       </div>
     </div>
   );
