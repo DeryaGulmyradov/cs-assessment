@@ -2,10 +2,9 @@ import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
 
-import styles from './Counter.module.css';
 import { userDataSelector, updateUserData } from '../../redux';
 
-export function Counter() {
+export const UserForm = () => {
   const dispatch = useDispatch();
   const userData = useSelector(userDataSelector);
 
@@ -22,13 +21,11 @@ export function Counter() {
 
   return (
     <div>
-      <div className={styles.row}>
-        <Button color='primary' variant='contained' onClick={onUpdateUserData}>
-          Updata User Data
-        </Button>
+      <Button color='primary' variant='contained' onClick={onUpdateUserData}>
+        Updata User Data
+      </Button>
 
-        <p>{JSON.stringify(userData)}</p>
-      </div>
+      <p>{JSON.stringify(userData)}</p>
     </div>
   );
-}
+};
