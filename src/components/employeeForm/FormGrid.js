@@ -4,7 +4,7 @@ import { TextField } from 'mui-rff';
 import { useStyles } from './Form.style';
 import { SubmitButton } from './SubmitButton';
 
-export const FormGrid = ({ onIncrement }) => {
+export const FormGrid = ({ onIncrement, counterValue }) => {
   const { root, textField } = useStyles();
 
   return (
@@ -43,6 +43,7 @@ export const FormGrid = ({ onIncrement }) => {
             name='counter'
             placeholder='Counter Value'
             disabled={true}
+            value={counterValue}
           />
           <Button color='primary' variant='contained' onClick={onIncrement}>
             +

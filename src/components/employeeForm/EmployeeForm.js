@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import { Grid } from '@material-ui/core';
 import { Form } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,7 +6,7 @@ import { userDataSelector, counterSelector, updateUserData, updateCounter } from
 import { FormGrid } from './FormGrid';
 import { useStyles } from './Form.style';
 
-export const EmployeeForm = () => {
+export const EmployeeForm = memo(() => {
   const dispatch = useDispatch();
   const counter = useSelector(counterSelector);
 
@@ -17,10 +17,10 @@ export const EmployeeForm = () => {
 
   const handleFormSubmit = useCallback(
     (formData) => {
-      console.log('FORM DATA: ', formData);
+      console.log('FORM DATA: ', { ...formData, counter });
       dispatch(updateUserData(formData));
     },
-    [dispatch],
+    [dispatch, counter],
   );
 
   const handleIncrement = useCallback(() => {
@@ -34,17 +34,17 @@ export const EmployeeForm = () => {
           firstName,
           lastName,
           hourlyRate,
-          counter,
+          counter: 0,
         }}
         onSubmit={handleFormSubmit}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Grid container alignItems='flex-start' direction='row' spacing={2}>
-              <FormGrid onIncrement={handleIncrement} />
+              <FormGrid onIncrement={handleIncrement} counterValue={counter} />
             </Grid>
           </form>
         )}
       />
     </div>
   );
-};
+});
