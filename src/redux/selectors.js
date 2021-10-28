@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 
-export const counterSelector = (state) => state.counter;
+export const userState = (state) => state.user;
 
-export const counterValueSelector = createSelector(counterSelector, (counter) => counter.value);
+export const counterValueSelector = createSelector(userState, (user) => user.value);
+
+export const userDataSelector = createSelector(userState, (user) => user.userData);
