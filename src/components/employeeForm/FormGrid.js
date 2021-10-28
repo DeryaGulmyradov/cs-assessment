@@ -5,7 +5,7 @@ import { useStyles } from './Form.style';
 import { SubmitButton } from './SubmitButton';
 
 export const FormGrid = ({ onIncrement }) => {
-  const { root, textField, counterField } = useStyles();
+  const { root, textField } = useStyles();
 
   return (
     <>

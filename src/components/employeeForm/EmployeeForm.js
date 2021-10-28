@@ -8,24 +8,24 @@ import { useStyles } from './Form.style';
 
 export const EmployeeForm = () => {
   const dispatch = useDispatch();
+  const counter = useSelector(counterSelector);
+
   const userData = useSelector(userDataSelector);
-  const counterValue = useSelector(counterSelector);
+  const { firstName, lastName, hourlyRate } = userData;
 
   const { formWrapper } = useStyles();
 
-  const { firstName, lastName, hourlyRate, counter } = userData;
-
   const handleFormSubmit = useCallback(
     (formData) => {
-      console.log('USER DATA: ', formData);
+      console.log('FORM DATA: ', formData);
       dispatch(updateUserData(formData));
     },
     [dispatch],
   );
 
   const handleIncrement = useCallback(() => {
-    dispatch(updateCounter(counterValue + 1));
-  }, [dispatch, counterValue]);
+    dispatch(updateCounter(counter + 1));
+  }, [dispatch, counter]);
 
   return (
     <div className={formWrapper}>
@@ -34,7 +34,7 @@ export const EmployeeForm = () => {
           firstName,
           lastName,
           hourlyRate,
-          counter: counterValue,
+          counter,
         }}
         onSubmit={handleFormSubmit}
         render={({ handleSubmit }) => (
