@@ -6,6 +6,7 @@ const initialState = {
     lastName: 'Harris',
     hourlyRate: '$55',
   },
+  counter: 12,
 };
 
 export const userSlice = createSlice({
@@ -13,10 +14,18 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     updateUserData: (state, action) => {
-      state.userData = action.payload;
+      const { firstName, lastName, hourlyRate } = action.payload;
+      state.userData = {
+        firstName,
+        lastName,
+        hourlyRate,
+      };
+    },
+    updateCounter: (state, action) => {
+      state.counter = action.payload;
     },
   },
 });
 
-export const { updateUserData } = userSlice.actions;
+export const { updateUserData, updateCounter } = userSlice.actions;
 export const userReducer = userSlice.reducer;
