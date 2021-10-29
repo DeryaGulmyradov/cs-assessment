@@ -10,7 +10,6 @@
     "@mui/material": "^5.0.6",
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "final-form": "^4.20.4",
     "mui-rff": "^5.0.0",
@@ -18,7 +17,8 @@
     "react-dom": "^17.0.2",
     "react-final-form": "^6.5.7",
     "react-redux": "^7.2.6",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "jest": "26.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +40,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^9.5.0",
+    "jest": "^27.3.1"
   }
 }
